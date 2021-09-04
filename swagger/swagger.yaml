@@ -1,0 +1,219 @@
+swagger: '2.0'
+host: glocally-1ssbxckwolcpq.apigateway.glocally-dps.cloud.goog
+x-google-endpoints:
+- name: glocally-1ssbxckwolcpq.apigateway.glocally-dps.cloud.goog
+  allowCors: True
+info:
+  title: /rest/api/v1/masterdata
+  description: MasterData Api 
+  version: 1.0.0
+schemes:
+- https
+produces:
+- application/json
+x-google-backend:
+  address: https://glocally-masterdata-uwawuosv7q-uc.a.run.app
+security:
+- api_key: []
+paths:
+    /rest/api/v1/masterdata/order:
+      post:
+        summary: order
+        operationId: postorder
+        parameters:
+        - in: header
+          name: userEmail
+          type: string
+          description: Email of the individual
+        responses:
+          '200':
+            description: A successful response
+            schema:
+              type: string   
+        security:
+        - auth0_jwt: []
+
+      get:
+        summary: order
+        operationId: getorder
+        parameters:
+        - in: header
+          name: userEmail
+          type: string
+          description: Email of the individual
+        responses:
+          '200':
+            description: A successful response
+            schema:
+              type: string   
+        security:
+        - auth0_jwt: []
+
+    /rest/api/v1/masterdata/order/{order_id}:
+      delete:
+        summary: order
+        operationId: deleteorder
+        parameters:
+          - in: path
+            name: order_id
+            description: accountBenifitId of target account Benifit
+            type: string
+            required: true
+        responses:
+          '200':
+            description: A successful response
+            schema:
+              type: string   
+        security:
+        - auth0_jwt: []
+      put:
+        summary: order
+        operationId: putorder
+        parameters:
+          - in: path
+            name: order_id
+            description: accountBenifitId of target account Benifit
+            type: string
+            required: true
+        responses:
+          '200':
+            description: A successful response
+            schema:
+              type: string   
+        security:
+        - auth0_jwt: []
+
+
+
+
+    /rest/api/v1/masterdata/configuration:
+      get:
+        summary: configuration
+        operationId: getconfiguration
+        responses:
+          '200':
+            description: A successful response
+            schema:
+              type: string 
+        security:
+        - auth0_jwt: []  
+ 
+      post:
+        summary: configuration
+        operationId: postconfiguration
+        responses:
+          '200':
+            description: A successful response
+            schema:
+              type: string   
+
+    /rest/api/v1/masterdata/files/upload:
+      post:
+        tags:
+        - "File"
+        summary: "Post File"
+        operationId: uploadorder
+        consumes:
+          - application/octet-stream
+        parameters:
+          - in: header
+            name: X-APP-TYPE
+            required: true
+            type: string
+            enum:
+            - Andriod
+            - IOS
+            - Web
+            description: Describes application or device type.
+          - in: header
+            name: X-APP-VERSION
+            required: true
+            type: string
+            description: Describes application version 1.0.1.
+          - in: header
+            name: X-DEVICE-ID
+            required: true
+            type: string
+            description: Describes device ID XDFSD23345435.
+          - in: header
+            name: X-IP-ADDRESS
+            required: true
+            type: string
+            description: Describes IP Address of the device.
+          - in: header
+            name: X-CHANNEL
+            required: true
+            type: string
+            enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+            description: Describes channel code 
+          - in: header
+            name: Content-Type
+            required: true
+            type: string
+            description: Describes channel code 
+          - in: header
+            name: X-IBM-CLIENT-ID
+            required: true
+            type: string
+            description: Client credentials required for API Connect
+          - in: body
+            name: body
+            description: Post body File Upload
+            schema:
+                type: object
+                properties:
+                  file:
+                    type: string
+                    format: binary
+        description: ""
+        produces:
+        - "application/json"
+        responses:
+          '200':
+            description: A successful response
+            schema:
+              type: string 
+
+    /rest/api/v1/masterdata/configuration/{configuration_id}: 
+      delete:
+        summary: configuration
+        operationId: deleteconfiguration
+        parameters:
+          - in: path
+            name: configuration_id
+            description: configuration description
+            type: string
+            required: true
+        responses:
+          '200':
+            description: A successful response
+            schema:
+              type: string   
+     
+      put:
+        summary: configuration
+        operationId: putconfiguration
+        parameters:  
+          - in: path
+            name: configuration_id
+            description: configuration description
+            type: string
+            required: true
+            
+        responses:
+          '200':
+            description: A successful response
+            schema:
+              type: string   
+  
+securityDefinitions:
+  auth0_jwt:
+    authorizationUrl: "https://glocally.eu.auth0.com/authorize"
+    flow: "implicit"
+    type: "oauth2"
+    x-google-issuer: "https://glocally.eu.auth0.com/"
+    x-google-jwks_uri: "https://glocally.eu.auth0.com/.well-known/jwks.json"
+    x-google-audiences: "https://glocally.eu.auth0.com/api/v2/" 
