@@ -19,10 +19,8 @@
     "nodemon": "^1.19.4"
   },
   "dependencies": {
-    "@onfleet/node-onfleet": "^1.2.5",
-    "@tensorflow/tfjs": "^3.7.0",
-    "@tensorflow/tfjs-node": "^3.7.0",
-    "airtable": "^0.11.1",
+    "@tensorflow-models/mobilenet": "^2.1.0",
+    "@tensorflow/tfjs": "^3.9.0",
     "ajv": "^8.5.0",
     "cjs-loader": "^0.1.0",
     "colors": "^1.4.0",
@@ -32,6 +30,7 @@
     "express": "^4.17.1",
     "express-http-context": "^1.2.4",
     "express-session": "^1.17.2",
+    "jpeg-js": "^0.4.3",
     "json-stringify-safe": "^5.0.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",

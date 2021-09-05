@@ -2,6 +2,7 @@ const configurationController = require('../controller/configurationController')
 const orderController = require('../controller/orderController')
 const filesController = require('../controller/filesController')
 const upload =require('../middleware/uploadMiddleware')
+const tensorController = require('../controller/tensorController')
 
 
 module.exports =(app) => {
@@ -10,7 +11,10 @@ module.exports =(app) => {
     app.get(`/rest/api/v1/masterdata/order`, orderController.getAll);
     app.post(`/rest/api/v1/masterdata/order`,orderController.insert);
     app.put(`/rest/api/v1/masterdata/order/:id`, orderController.update);
-    app.delete(`/rest/api/v1/masterdata/order/:id`,orderController.delete);
+    app.get(`/rest/api/v1/masterdata/predict`,upload.single('file'),tensorController.upload);
+
+    app.post(`/rest/api/v1/masterdata/order`,orderController.insert);
+
 
 
     app.post('/rest/api/v1/masterdata/files/upload',upload.single('file'), filesController.upload);
