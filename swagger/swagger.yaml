@@ -1,7 +1,7 @@
 swagger: '2.0'
-host: glocally-1ssbxckwolcpq.apigateway.glocally-dps.cloud.goog
+host: hackfest-0yrht0ygj303d.apigateway.hackfest-2021.cloud.goog
 x-google-endpoints:
-- name: glocally-1ssbxckwolcpq.apigateway.glocally-dps.cloud.goog
+- name: hackfest-0yrht0ygj303d.apigateway.hackfest-2021.cloud.goog
   allowCors: True
 info:
   title: /rest/api/v1/masterdata
@@ -12,7 +12,7 @@ schemes:
 produces:
 - application/json
 x-google-backend:
-  address: https://glocally-masterdata-uwawuosv7q-uc.a.run.app
+  address: https://masterdata-hackfest-3alps67tda-uc.a.run.app
 security:
 - api_key: []
 paths:
@@ -211,9 +211,9 @@ paths:
   
 securityDefinitions:
   auth0_jwt:
-    authorizationUrl: "https://glocally.eu.auth0.com/authorize"
+    authorizationUrl: "https://dev-v6aygfgf.us.auth0.com/authorize"
     flow: "implicit"
     type: "oauth2"
-    x-google-issuer: "https://glocally.eu.auth0.com/"
-    x-google-jwks_uri: "https://glocally.eu.auth0.com/.well-known/jwks.json"
-    x-google-audiences: "https://glocally.eu.auth0.com/api/v2/" 
+    x-google-issuer: "https://dev-v6aygfgf.us.auth0.com/"
+    x-google-jwks_uri: "https://dev-v6aygfgf.us.auth0.com/.well-known/jwks.json"
+    x-google-audiences: "https://dev-v6aygfgf.us.auth0.com/api/v2/" 
